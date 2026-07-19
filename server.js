@@ -53,6 +53,8 @@ app.post('/auth/sign-in', authCtrl.signIn)
 app.delete('/auth/sign-out', authCtrl.signOut)
 
 app.get("/recipes/new", recipeCtrl.showNewForm)
+app.post("/recipes", recipeCtrl.create)
+app.get('/recipes', recipeCtrl.index)
 
 
 app.get('/dashboard', async (req, res) => {

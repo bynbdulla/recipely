@@ -1,28 +1,30 @@
-const Recipes = require('../models/recipe.js')
+const Recipe = require("../models/recipe.js");
 
 const showNewForm = (req, res) => {
-    res.render('recipes/new.ejs')
-}
+  res.render("recipes/new.ejs");
+};
 
-const create = async (req,res)=>{
-    const uploadImage = await uploadImage(req.file.buffer)
-    const recipeData = {}
+const create = async (req, res) => {
+  console.log(req.body);
+  const recipeData = {};
 
-    recipeData.recipeName = req.body.recipeName
-    recipeData.category = req.body.category
-    recipeData.cuisine = req.body.cuisine
-    recipeData.cookTime = req.body.cookTime
-    recipeData.ingredients = req.body.ingredients
-    recipData.instructions = req.body.instructions
-    recipeData.serving = req.body.serving
-    recipeData.image = {
-        url: uploadedImage.secure_url,
-    publicId: uploadedImage.public_id,
-}
-let createdRecipe = await Recipe.create(recipeData);
-  res.send(createdRecipe);
-}
+  recipeData.recipeName = req.body.recipeName;
+  recipeData.category = req.body.category;
+  recipeData.cuisine = req.body.cuisine;
+  recipeData.cookTime = req.body.cookTime;
+  recipeData.ingredients = req.body.ingredients;
+  recipeData.instructions = req.body.instructions;
+  recipeData.serving = req.body.serving;
+  let createdRecipe = await Recipe.create(recipeData);
+  res.redirect("/recipes");
+};
+
+const index = async (req, res) => {
+  res.send("It works!");
+};
 
 module.exports = {
-    showNewForm, 
-}
+  showNewForm,
+  create,
+  index,
+};

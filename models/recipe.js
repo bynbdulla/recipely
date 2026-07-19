@@ -1,48 +1,59 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const recipeSchema = new mongoose.Schema({
-    recipeName:{
-        type: String,
-        required: true,
+const recipeSchema = new mongoose.Schema(
+  {
+    recipeName: {
+      type: String,
+      required: true,
     },
-    category:{
-        type: String,
-        enum: ['breakfast', 'lunch', 'dinner','dessert', 'snack', 'soup', 'salad'],
-    }, 
-    cuisine:{
-        type: String,
+    category: {
+      type: String,
+      enum: [
+        "breakfast",
+        "lunch",
+        "dinner",
+        "dessert",
+        "snack",
+        "soup",
+        "salad",
+        "appetizer",
+      ],
     },
-    cookTime:{
-        type: Number,
+    cuisine: {
+      type: String,
     },
-    ingredients:{
-        type: [String],
-        required: true,
+    cookTime: {
+      type: Number,
     },
-    instructions:{
-        type: String,
-        required: true,
+    ingredients: {
+      type: [String],
+      required: true,
     },
-    serving:{
-        type: Number,
+    instructions: {
+      type: String,
+      required: true,
     },
-    owner:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    serving: {
+      type: Number,
     },
-    image:{
-        url: {
-            type: String,
-            required: true,
-        },
-        publicId: {
-            type: String,
-            required: true,
-        },
-    }
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    // image:{
+    //     url: {
+    //         type: String,
+    //         required: true,
+    //     },
+    //     publicId: {
+    //         type: String,
+    //         required: true,
+    //     },
+    // }
+  },
+  { timestamps: true },
+);
 
-}, { timestamps: true })
+const Recipe = mongoose.model("Recipe", recipeSchema);
 
-const Recipe = mongoose.model('Recipe', recipeSchema)
-
-module.exports = Recipe
+module.exports = Recipe;
