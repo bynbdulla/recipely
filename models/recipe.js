@@ -29,9 +29,19 @@ const recipeSchema = new mongoose.Schema({
     owner:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+    },
+    image:{
+        url: {
+            type: String,
+            required: true,
+        },
+        publicId: {
+            type: String,
+            required: true,
+        },
     }
 
-})
+}, { timestamps: true })
 
 const Recipe = mongoose.model('Recipe', recipeSchema)
 
