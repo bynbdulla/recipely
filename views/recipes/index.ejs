@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Recipes</title>
-</head>
-<body>
+<%- include('../partials/nav') %>
+
     <h1>All Recipes</h1>
-    <div>
-        <% recipes.forEach(recipe => { %>
-            <div>
-                <h2><%= recipe.title %></h2>
-                <p><%= recipe.description %></p>
-                <a href="/recipes/<%= recipe._id %>">View Recipe</a>
+    <div class="rec-container">
+        <% allRecipes.forEach((recipe) => { %>
+            <div class="recipe-box">
+                <h2><%= recipe.recipeName %></h2>
+                <a href="/recipes/<%= recipe._id %>">See more</a>
             </div>
         <% }) %>
+    </div>
 </body>
 </html>

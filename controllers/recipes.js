@@ -20,11 +20,20 @@ const create = async (req, res) => {
 };
 
 const index = async (req, res) => {
-  res.send("It works!");
+const allRecipes = await Recipe.find().populate('owner')
+res.render('recipes/index.ejs', {allRecipes})
 };
+
+const show = async (req,res)=>{
+// const recipe = await Recipe.findById(req.params.recipeId).populate('owner')
+
+// res.render('recipes/show.ejs', {recipe})
+res.send('hi')
+}
 
 module.exports = {
   showNewForm,
   create,
   index,
+  show,
 };

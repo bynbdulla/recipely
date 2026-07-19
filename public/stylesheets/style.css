@@ -38,4 +38,21 @@ button{
    width: 40%;
    height: 2rem;
 }
+.recipe-box{
+  border: 1.5px solid black;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  width: 40dvh;
+  height: 200px;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: white;
+}
+
+.rec-container{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
 
