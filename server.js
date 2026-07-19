@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
+const path = require("path");
 const app = express();
 
 const mongoose = require("mongoose");
@@ -9,7 +10,9 @@ const morgan = require("morgan");
 const session = require('express-session')
 const { MongoStore } = require('connect-mongo')
 
+
 const authCtrl = require('./controllers/auth')
+const recipeCtrl = require('./controllers/recipes')
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -27,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 // Morgan for logging HTTP requests
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -48,6 +52,9 @@ app.get('/auth/sign-in', authCtrl.showSignInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.delete('/auth/sign-out', authCtrl.signOut)
 
+app.get("/recipes/new", recipeCtrl.showNewForm)
+
+
 app.get('/dashboard', async (req, res) => {
     if (!req.session.user){
         return res.redirect('/auth/sign-in')
@@ -56,6 +63,7 @@ app.get('/dashboard', async (req, res) => {
         user: req.session.user
     })
 })
+
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
