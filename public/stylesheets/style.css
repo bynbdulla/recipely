@@ -24,21 +24,23 @@ input {
   border: 1.5px solid rgb(2, 2, 40);
   width: 50dvh;
 }
-option ,select, textarea{
+option,
+select,
+textarea {
   background-color: beige;
-   border: 1.5px solid rgb(2, 2, 40);
+  border: 1.5px solid rgb(2, 2, 40);
   width: 50dvh;
 }
- option{
-    background-color: azure;
- }
-button{
-    background-color: rgb(250, 250, 241);
-   border: 1.5px solid rgb(2, 2, 40);
-   width: 40%;
-   height: 2rem;
+option {
+  background-color: azure;
 }
-.recipe-box{
+button {
+  background-color: rgb(250, 250, 241);
+  border: 1.5px solid rgb(2, 2, 40);
+  width: 40%;
+  height: 2rem;
+}
+.recipe-box {
   border: 1.5px solid black;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -50,15 +52,22 @@ button{
   background-color: white;
 }
 
-.rec-container{
+.rec-container {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.recipe-top{
+.recipe-top {
   display: flex;
   flex-direction: row;
   gap: 50px;
 }
 
+.container {
+  justify-content: center;
+border: 2px solid rgb(3, 3, 39);
+padding: 20px;
+margin-top: 5rem;
+max-width: 100dvh;
+}
