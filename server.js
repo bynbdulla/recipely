@@ -56,6 +56,7 @@ app.get("/recipes/new", recipeCtrl.showNewForm);
 app.post("/recipes", recipeCtrl.create);
 app.get("/recipes", recipeCtrl.index);
 app.get("/recipes/:recipeId", recipeCtrl.show);
+app.get("/recipes/:recipeId/edit", recipeCtrl.edit);
 
 app.put("/recipes/:recipeId", recipeCtrl.update,
 );
