@@ -54,7 +54,7 @@ const update = async (req, res) => {
   );
   
   await recipe.save();
-  // res.send('hello!')
+  res.send('hello!')
 };
 
 module.exports = {

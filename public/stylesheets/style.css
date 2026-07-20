@@ -66,8 +66,8 @@ button {
 
 .container {
   justify-content: center;
-border: 2px solid rgb(3, 3, 39);
-padding: 20px;
-margin-top: 5rem;
-max-width: 100dvh;
+  border: 2px solid rgb(3, 3, 39);
+  padding: 20px;
+  margin-top: 5rem;
+  max-width: 100dvh;
 }

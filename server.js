@@ -55,7 +55,7 @@ app.delete("/auth/sign-out", authCtrl.signOut);
 app.get("/recipes/new", recipeCtrl.showNewForm);
 app.post("/recipes", recipeCtrl.create);
 app.get("/recipes", recipeCtrl.index);
-app.get("/recipes/:recipeId/edit", recipeCtrl.edit);
+app.get("/recipes/:recipeId", recipeCtrl.show);
 
 app.put("/recipes/:recipeId", recipeCtrl.update,
 );
