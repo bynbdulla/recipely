@@ -56,3 +56,9 @@ button{
   gap: 20px;
 }
 
+.recipe-top{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+

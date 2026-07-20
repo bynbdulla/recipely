@@ -1,11 +1,33 @@
 <%- include('../partials/nav') %>
 
-<h1>show the recipes</h1>
-    <ul>
-        <li>
-            <%= recipe.recipeName %>
-        </li>
-    </ul>
-</body>
+    <h1>
+        <%= recipe.recipeName %>
+    </h1>
+    <div class="recipe-top">
+        <h4>Category: <%= recipe.category%>
+        </h4>
+        <h4>Serving: <%= recipe.serving%>
+        </h4>
+        <h4>Cook Time: <%= recipe.cookTime%> mins </h4>
+    </div>
+    <div>
+        <h3>Ingredients: </h3>
+        <% recipe.ingredients.forEach((item)=>{ %>
+            <li>
+                <%= item %>
+            </li>
+            <br>
+            <% }) %>
 
-</html>
+    </div>
+    <div>
+        <h3>Instructions: </h3>
+        <p>
+            <%= recipe.instructions%>
+        </p>
+    </div>
+
+
+    </body>
+
+    </html>
