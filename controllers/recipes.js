@@ -26,8 +26,35 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
   const recipe = await Recipe.findById(req.params.recipeId).populate("owner");
-  console.log(recipe);
-  res.render("recipes/show.ejs", { recipe });
+  const allingredients = recipe.ingredients[0].split(",");
+
+  console.log(allingredients, "====================");
+  res.render("recipes/show.ejs", { recipe, allingredients });
+};
+
+const edit = async (req, res) => {
+  const recipe = await Recipe.findById(req.params.recipeId);
+  res.render("recipes/edit.ejs", { recipe });
+};
+
+const update = async (req, res) => {
+  console.log(req.params);
+  const recipe = await Recipe.findById(req.params.recipeId);
+
+  await Recipe.findByIdAndUpdate(
+    req.params.id,
+    (recipeData = {
+      recipeName: req.body.recipeName,
+      category: req.body.category,
+      serving: req.body.serving,
+      cookTime: req.body.cookTime, 
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+    }),
+  );
+  
+  await recipe.save();
+  // res.send('hello!')
 };
 
 module.exports = {
@@ -35,4 +62,6 @@ module.exports = {
   create,
   index,
   show,
+  edit,
+  update, 
 };
