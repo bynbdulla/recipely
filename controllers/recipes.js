@@ -55,14 +55,8 @@ const update = async (req, res) => {
 
 const deleteRecipe = async (req,res)=>{
   const recipe = await Recipe.findById(req.params.recipeId)
-  if (recipe.owner.equals(req.session.recipeId)) {
     await Recipe.findByIdAndDelete(req.params.recipeId);
     res.redirect("/recipes");
-  } else {
-    res.render("error.ejs", {
-      msg: "You don't have permission to do that.",
-    });
-  }
 }
 
 module.exports = {
