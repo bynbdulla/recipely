@@ -37,7 +37,6 @@ const edit = async (req, res) => {
   const recipe = await Recipe.findById(req.params.recipeId);
   res.render("recipes/edit.ejs", { recipe });
 };
-
 const update = async (req, res) => {
   console.log(req.params);
   const recipeData = {}
@@ -54,6 +53,18 @@ const update = async (req, res) => {
   res.redirect(`/recipes/${req.params.recipeId}`)
 };
 
+const deleteRecipe = async (req,res)=>{
+  const recipe = await Recipe.findById(req.params.recipeId)
+  if (recipe.owner.equals(req.session.recipeId)) {
+    await Recipe.findByIdAndDelete(req.params.recipeId);
+    res.redirect("/recipes");
+  } else {
+    res.render("error.ejs", {
+      msg: "You don't have permission to do that.",
+    });
+  }
+}
+
 module.exports = {
   showNewForm,
   create,
@@ -61,4 +72,5 @@ module.exports = {
   show,
   edit,
   update, 
+  deleteRecipe ,
 };

@@ -1,9 +1,8 @@
 <%- include('../partials/nav') %>
 
-<div class="container">
-    <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
-    <a href="/recipes/<%= recipe._id %>/delete">Delete</a>
-    <h1>
+    <div class="container">
+        <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
+        <h1>
             <%= recipe.recipeName %>
         </h1>
         <div class="recipe-top">
@@ -21,14 +20,17 @@
                 </li>
                 <br>
                 <% }) %>
-        </div>
-        <div class="instructions">
-            <h3>Instructions: </h3>
-            <% allinstructions.forEach((item)=>{ %>
+            </div>
+            <div class="instructions">
+                <h3>Instructions: </h3>
+                <% allinstructions.forEach((item)=>{ %>
                     <%= item %>
-                <br>
-                <% }) %>
-        </div>
+                    <br>
+                    <% }) %>
+                </div>
+                <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="delete">Delete</button>
+                </form>
     </div>
 
     </div>

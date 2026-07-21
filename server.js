@@ -58,8 +58,8 @@ app.get("/recipes", recipeCtrl.index);
 app.get("/recipes/:recipeId", recipeCtrl.show);
 app.get("/recipes/:recipeId/edit", recipeCtrl.edit);
 
-app.put("/recipes/:recipeId", recipeCtrl.update,
-);
+app.put("/recipes/:recipeId", recipeCtrl.update);
+app.delete("/recipes/:recipeId", recipeCtrl.deleteRecipe);
 
 // app.get("/dashboard", async (req, res) => {
 //   if (!req.session.user) {
