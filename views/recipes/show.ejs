@@ -2,11 +2,11 @@
 
     <div class="container">
         <div class="with-delete">
-        <a href="/recipes/<%= recipe._id %>/edit" class="delete"><div><img src="/images/compose.png" width="30px"></div></a>
-        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
-            <button type="submit" class="delete"><img src="/images/delete.png" width="30px"></button>
-        </form>
+            <a href="/recipes/<%= recipe._id %>/edit" class="delete">
+                <div><img src="/images/compose.png" width="30px"></div>
+            </a>
         </div>
+        
         <h1>
             <%= recipe.recipeName %>
         </h1>
@@ -33,14 +33,14 @@
                     <br>
                     <% }) %>
         </div>
-        <div class="delete-comment">
+        <div class="comments">
 
             <form action="/recipes/<%= recipe._id %>/comments" method="post">
                 <textarea name="msg" rows="4" placeholder="comment"></textarea>
                 <button type="submit">Add comment</button>
             </form>
         </div>
-        <div>
+        <div class="comments">
             <h3>Comments</h3>
             <% recipe.comments.forEach((comment)=> { %>
                 <div>
@@ -51,6 +51,11 @@
                     </p>
                 </div>
                 <% })%>
+        </div>
+        <div class="with-delete">
+            <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="delete"><img src="/images/delete.png" width="30px"></button>
+            </form>
         </div>
     </div>
 
