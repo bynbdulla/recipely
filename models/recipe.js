@@ -19,9 +19,7 @@ const recipeSchema = new mongoose.Schema(
         "appetizer",
       ],
     },
-    cuisine: {
-      type: String,
-    },
+    
     cookTime: {
       type: Number,
     },
@@ -39,17 +37,7 @@ const recipeSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-    },
-    // image:{
-    //     url: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     publicId: {
-    //         type: String,
-    //         required: true,
-    //     },
-    // }
+    }
   },
   { timestamps: true },
 );
