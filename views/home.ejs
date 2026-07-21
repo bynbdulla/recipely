@@ -2,7 +2,7 @@
 
      <% if (user) { %>
         <h1>Welcome to Recipely <%= user.username %> 🧑‍🍳</h1>
-        <form action="/auth/sign-out?_method=DELETE" method="POST">
+        <form action="/auth/sign-out?_method=DELETE" method="POST" class="sign-out">
             <button type="submit">Sign Out</button>
         </form>
     <% } else { %>

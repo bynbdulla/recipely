@@ -71,3 +71,9 @@ button {
   margin-top: 5rem;
   max-width: 100dvh;
 }
+
+.sign-out{
+width: 47dvh;
+justify-content: center;
+align-items: center;
+}

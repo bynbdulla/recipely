@@ -19,15 +19,16 @@
                 </li>
                 <br>
                 <% }) %>
-
         </div>
         <div>
             <h3>Instructions: </h3>
-            <p>
-                <%= recipe.instructions%>
-            </p>
+            <% allinstructions.forEach((item)=>{ %>
+                    <%= item %>
+                <br>
+                <% }) %>
         </div>
-        <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
+    </div>
+    <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
 
     </div>
 

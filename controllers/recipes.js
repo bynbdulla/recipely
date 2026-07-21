@@ -27,9 +27,10 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   const recipe = await Recipe.findById(req.params.recipeId).populate("owner");
   const allingredients = recipe.ingredients[0].split(",");
+  const allinstructions  = recipe.instructions[0].split(".")
 
-  console.log(allingredients, "====================");
-  res.render("recipes/show.ejs", { recipe, allingredients });
+  console.log(allingredients , "====================");
+  res.render("recipes/show.ejs", { recipe, allingredients, allinstructions});
 };
 
 const edit = async (req, res) => {
@@ -39,22 +40,18 @@ const edit = async (req, res) => {
 
 const update = async (req, res) => {
   console.log(req.params);
-  const recipe = await Recipe.findById(req.params.recipeId);
-
-  await Recipe.findByIdAndUpdate(
-    req.params.id,
-    (recipeData = {
-      recipeName: req.body.recipeName,
-      category: req.body.category,
-      serving: req.body.serving,
-      cookTime: req.body.cookTime, 
-      ingredients: req.body.ingredients,
-      instructions: req.body.instructions,
-    }),
-  );
+  const recipeData = {}
+  recipeData.recipeName = req.body.recipeName
+  recipeData.category= req.body.category
+  recipeData.serving= req.body.serving
+  recipeData.cookTime= req.body.cookTime
+  recipeData.ingredients= req.body.ingredients
+  recipeData.instructions= req.body.instructions
   
+  const recipe = await Recipe.findByIdAndUpdate(req.params.recipeId, recipeData);
   await recipe.save();
-  res.send('hello!')
+  // await Recipe.findByIdAndUpdate(req.params.recipeId , recipeData , {new: true})
+  res.redirect(`/recipes/${req.params.recipeId}`)
 };
 
 module.exports = {

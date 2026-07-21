@@ -61,14 +61,14 @@ app.get("/recipes/:recipeId/edit", recipeCtrl.edit);
 app.put("/recipes/:recipeId", recipeCtrl.update,
 );
 
-app.get("/dashboard", async (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/auth/sign-in");
-  }
-  res.render("dashboard.ejs", {
-    user: req.session.user,
-  });
-});
+// app.get("/dashboard", async (req, res) => {
+//   if (!req.session.user) {
+//     return res.redirect("/auth/sign-in");
+//   }
+//   res.render("dashboard.ejs", {
+//     user: req.session.user,
+//   });
+// });
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
