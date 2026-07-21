@@ -1,7 +1,9 @@
 <%- include('../partials/nav') %>
 
-    <div class="container">
-        <h1>
+<div class="container">
+    <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
+    <a href="/recipes/<%= recipe._id %>/delete">Delete</a>
+    <h1>
             <%= recipe.recipeName %>
         </h1>
         <div class="recipe-top">
@@ -11,7 +13,7 @@
             </h4>
             <h4>Cook Time: <%= recipe.cookTime%> mins </h4>
         </div>
-        <div>
+        <div class="ingredients">
             <h3>Ingredients: </h3>
             <% allingredients.forEach((item)=>{ %>
                 <li>
@@ -20,7 +22,7 @@
                 <br>
                 <% }) %>
         </div>
-        <div>
+        <div class="instructions">
             <h3>Instructions: </h3>
             <% allinstructions.forEach((item)=>{ %>
                     <%= item %>
@@ -28,7 +30,6 @@
                 <% }) %>
         </div>
     </div>
-    <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
 
     </div>
 
