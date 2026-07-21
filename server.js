@@ -12,6 +12,7 @@ const { MongoStore } = require("connect-mongo");
 
 const authCtrl = require("./controllers/auth");
 const recipeCtrl = require("./controllers/recipes");
+const commentCtrl = require("./controllers/comments");
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -52,23 +53,33 @@ app.get("/auth/sign-in", authCtrl.showSignInForm);
 app.post("/auth/sign-in", authCtrl.signIn);
 app.delete("/auth/sign-out", authCtrl.signOut);
 
+// Recipe Routes
 app.get("/recipes/new", recipeCtrl.showNewForm);
 app.post("/recipes", recipeCtrl.create);
 app.get("/recipes", recipeCtrl.index);
 app.get("/recipes/:recipeId", recipeCtrl.show);
 app.get("/recipes/:recipeId/edit", recipeCtrl.edit);
-
 app.put("/recipes/:recipeId", recipeCtrl.update);
 app.delete("/recipes/:recipeId", recipeCtrl.deleteRecipe);
 
-// app.get("/dashboard", async (req, res) => {
-//   if (!req.session.user) {
-//     return res.redirect("/auth/sign-in");
-//   }
-//   res.render("dashboard.ejs", {
-//     user: req.session.user,
-//   });
-// });
+//comment routes
+app.post("/recipes/:id/comments", commentCtrl.create);
+
+// Dashboard route
+app.get("/dashboard", async (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/auth/sign-in");
+  }
+  res.render("dashboard.ejs", {
+    user: req.session.user,
+  });
+});
+
+app.get("/*splat", (req, res) => {
+  res.render("error.ejs", {
+    msg: 404,
+  });
+});
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

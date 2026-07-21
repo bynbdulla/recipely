@@ -5,7 +5,6 @@ const showNewForm = (req, res) => {
 };
 
 const create = async (req, res) => {
-  console.log(req.body);
   const recipeData = {};
 
   recipeData.recipeName = req.body.recipeName;
@@ -25,12 +24,13 @@ const index = async (req, res) => {
 };
 
 const show = async (req, res) => {
-  const recipe = await Recipe.findById(req.params.recipeId).populate("owner");
+  const recipe = await Recipe.findById(req.params.recipeId)
+    .populate("owner")
+    .populate("comments.ownerId");
   const allingredients = recipe.ingredients[0].split(",");
-  const allinstructions  = recipe.instructions[0].split(".")
+  const allinstructions = recipe.instructions[0].split(".");
 
-  console.log(allingredients , "====================");
-  res.render("recipes/show.ejs", { recipe, allingredients, allinstructions});
+  res.render("recipes/show.ejs", { recipe, allingredients, allinstructions });
 };
 
 const edit = async (req, res) => {
@@ -38,26 +38,28 @@ const edit = async (req, res) => {
   res.render("recipes/edit.ejs", { recipe });
 };
 const update = async (req, res) => {
-  console.log(req.params);
-  const recipeData = {}
-  recipeData.recipeName = req.body.recipeName
-  recipeData.category= req.body.category
-  recipeData.serving= req.body.serving
-  recipeData.cookTime= req.body.cookTime
-  recipeData.ingredients= req.body.ingredients
-  recipeData.instructions= req.body.instructions
-  
-  const recipe = await Recipe.findByIdAndUpdate(req.params.recipeId, recipeData);
+  const recipeData = {};
+  recipeData.recipeName = req.body.recipeName;
+  recipeData.category = req.body.category;
+  recipeData.serving = req.body.serving;
+  recipeData.cookTime = req.body.cookTime;
+  recipeData.ingredients = req.body.ingredients;
+  recipeData.instructions = req.body.instructions;
+
+  const recipe = await Recipe.findByIdAndUpdate(
+    req.params.recipeId,
+    recipeData,
+  );
   await recipe.save();
   // await Recipe.findByIdAndUpdate(req.params.recipeId , recipeData , {new: true})
-  res.redirect(`/recipes/${req.params.recipeId}`)
+  res.redirect(`/recipes/${req.params.recipeId}`);
 };
 
-const deleteRecipe = async (req,res)=>{
-  const recipe = await Recipe.findById(req.params.recipeId)
-    await Recipe.findByIdAndDelete(req.params.recipeId);
-    res.redirect("/recipes");
-}
+const deleteRecipe = async (req, res) => {
+  const recipe = await Recipe.findById(req.params.recipeId);
+  await Recipe.findByIdAndDelete(req.params.recipeId);
+  res.redirect("/recipes");
+};
 
 module.exports = {
   showNewForm,
@@ -65,6 +67,6 @@ module.exports = {
   index,
   show,
   edit,
-  update, 
-  deleteRecipe ,
+  update,
+  deleteRecipe,
 };

@@ -86,10 +86,13 @@ align-items: center;
 .ingredients, .instructions {
   text-align: left;
   margin-left: 3rem;
+  margin-bottom: 2rem;
 }
 
 .delete{
-  margin-top: 2rem;
+width: 20dvh;
+background-color: rgb(217, 219, 255);
+border: none;
 }
 
 /* .title-container{
@@ -98,3 +101,15 @@ align-items: center;
   gap: 30px;
 align-items: baseline;
 } */
+
+.with-delete{
+  display: flex;
+  flex-direction: row;
+  justify-content:right ;
+  
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

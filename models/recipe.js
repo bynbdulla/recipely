@@ -1,4 +1,16 @@
 const mongoose = require("mongoose");
+const commentSchema = new mongoose.Schema(
+  {
+    msg: {
+      type: String,
+    },
+    ownerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  },
+  { timestamp: true },
+);
 
 const recipeSchema = new mongoose.Schema(
   {
@@ -19,7 +31,7 @@ const recipeSchema = new mongoose.Schema(
         "appetizer",
       ],
     },
-    
+
     cookTime: {
       type: Number,
     },
@@ -37,7 +49,8 @@ const recipeSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-    }
+    },
+    comments: [commentSchema],
   },
   { timestamps: true },
 );
