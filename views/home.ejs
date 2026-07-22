@@ -1,19 +1,25 @@
 <%- include('./partials/nav') %>
-
-     <% if (user) { %>
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <% if (user) { %>
         <h1>Welcome to Recipely <%= user.username %> 🧑‍🍳</h1>
         <form action="/auth/sign-out?_method=DELETE" method="POST" class="sign-out">
             <button type="submit">Sign Out</button>
         </form>
-    <% } else { %>
-        <a href="/auth/sign-up">Sign Up</a>
-        <a href="/auth/sign-in">Sign In</a>
-    <% } %> 
+        <% } else { %>
+            <form>
+                <h2>Are you a user? </h2>
+                <div class="container-1">
+                    <div class="response"><a href="/auth/sign-up">NO😩<br> create account</a></div>
+                    <div class="response">
+                        <a href="/auth/sign-in">YES😍<br> Sign in</a>
+                    </div>
+                    </button>
+                </div>
+            </form>
+            <% } %>
 
-    <form>
 
-    </form>
 
-    
-</body>
-</html>
+                </body>
+
+                </html>
