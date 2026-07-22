@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <title>Recipely</title>
 </head>
 
 <body>
-    <div class="nav-container">
+    <header>
         <div class="website-name">
             <h2>Recipely</h2>
         </div>
@@ -18,9 +19,9 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/recipes">All Recipes</a>
             <a href="/recipes/new">New Recipe</a>
-        
+
             <form action="/auth/sign-out?_method=DELETE" method="POST" class="sign-out">
                 <button type="submit" class="nav-sign-out">Sign Out</button>
             </form>
         </nav>
-    </div>
+    </header>

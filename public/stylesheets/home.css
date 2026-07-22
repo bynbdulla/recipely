@@ -1,6 +1,19 @@
+:root {
+  --color-wild-thyme: #495d3f;
+  --color-lemon-sage: #a8a968;
+  --color-porcelain-mist: #f5f1ed;
+  --color-desert-linen: #e0dac2;
+  --color-text-dark: #333333;
+  --color-text-light: #888888;
+}
 .response{
     margin-bottom: 5px;
 }
+
+section{
+margin-top: 3rem;
+}
+
 .container-1{
     display: flex;
     border: none;
@@ -8,14 +21,14 @@
 }
 button{
     justify-content: center;
-    background-color:rgb(69, 35, 69);
+    background-color:var(--color-wild-thyme);
     color: aliceblue;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: inherit;
     border-radius: 3px;
     width: 25dvh;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     margin-top: 1.5rem;
-    font-size: medium;
-        align-self: center;
-
+    font-size: large;
+    align-self: center;
+    border: none;
 }
