@@ -96,12 +96,7 @@ button {
   padding: 20px;
   margin-top: 5rem;
   width: 100dvh;
-  background-image: url('../images/recipe-background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  /* background-attachment: fixed; */
-  opacity: 0.8;
+  
 }
 
 .sign-out {
@@ -125,12 +120,7 @@ button {
   justify-content: right;
 }
 
-/* .title-container{
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-align-items: baseline;
-} */
+
 
 .with-delete {
   display: flex;
