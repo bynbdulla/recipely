@@ -1,7 +1,7 @@
 const isSignedIn = (req, res, next) => {
-    if (!req.session.user) 
-        return res.redirect('/auth/sign-in')
-        next()
-}
+  console.log("is signed in");
+  if (!req.session.user) return res.redirect("/auth/sign-in");
+  next();
+};
 
-module.exports = isSignedIn
+module.exports = isSignedIn;

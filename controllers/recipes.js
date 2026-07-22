@@ -14,6 +14,7 @@ const create = async (req, res) => {
   recipeData.ingredients = req.body.ingredients;
   recipeData.instructions = req.body.instructions;
   recipeData.serving = req.body.serving;
+  recipeData.owner = req.session.user._id;
   let createdRecipe = await Recipe.create(recipeData);
   res.redirect("/recipes");
 };
@@ -51,6 +52,7 @@ const update = async (req, res) => {
     recipeData,
   );
   await recipe.save();
+
   // await Recipe.findByIdAndUpdate(req.params.recipeId , recipeData , {new: true})
   res.redirect(`/recipes/${req.params.recipeId}`);
 };
@@ -61,6 +63,16 @@ const deleteRecipe = async (req, res) => {
   res.redirect("/recipes");
 };
 
+const showMyRecipes = async (req, res) => {
+  const recipes = await Recipe.find({ owner: req.session.user._id });
+
+
+  res.render("dashboard.ejs", {
+    user: req.session.user,
+    recipes,
+  });
+};
+
 module.exports = {
   showNewForm,
   create,
@@ -69,4 +81,5 @@ module.exports = {
   edit,
   update,
   deleteRecipe,
+  showMyRecipes,
 };
