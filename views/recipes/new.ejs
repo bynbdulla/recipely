@@ -1,45 +1,48 @@
 <%- include('../partials/nav') %>
 
     <h1>Create a New Recipe</h1>
-    <form action="/recipes" method="POST">
-        Recipe name:
-        <input type="text" name="recipeName" required>
+    <form action="/recipes" method="POST" style="margin-top: 2.5rem;">
+        <div class="form-group">
+
+            Recipe name:
+            <input type="text" name="recipeName" required>
+        </div>
         <br>
+        <div class="form-group">
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="dessert">Dessert</option>
+                <option value="snack">Snack</option>
+                <option value="soup">Soup</option>
+                <option value="salad">Salad</option>
+            </select>
+        </div>
         <br>
-        <label for="category">Category:</label>
-        <select id="category" name="category" required>
-            <option value="">Select a category</option>
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="dessert">Dessert</option>
-            <option value="snack">Snack</option>
-            <option value="soup">Soup</option>
-            <option value="salad">Salad</option>
-        </select>
+        <div class="form-group">
+
+            <label>Serving: </label>
+            <input type="text" name="serving" id="serving">
+        </div>
         <br>
+        <div class="form-group">
+            <label for="cookTime">Cook Time:</label>
+            <input type="number" id="cookTime" name="cookTime" required>
+        </div>
         <br>
-      <label>Serving: </label>
-      <input type="text" name="serving" id="serving">
-        <!-- <label for="image">Image:</label>
-        <input type="file" id="image" name="image"> -->
+        <div class="form-group">
+            <label for="ingredients">Ingredients:</label>
+            <textarea name="ingredients" id="ingredients"></textarea>
+        </div>
         <br>
-        <br>
-        <!-- <label for="prepTime">Prep Time:</label>
-        <input type="number" id="prepTime" name="prepTime" required>  -->
-        <!-- <br>
-        <br> -->
-        <label for="cookTime">Cook Time:</label>
-        <input type="number" id="cookTime" name="cookTime" required>
-        <br>
-        <br>
-        <label for="ingredients">Ingredients:</label>
-        <textarea name="ingredients" id="ingredients"></textarea>
-        <br>
-        <br>
-        <label for="instructions">Instructions:</label>
-        <textarea name="instructions" id="instructions"></textarea>
-        <br>
+        <div class="form-group">
+            <label for="instructions">Instructions:</label>
+            <textarea name="instructions" id="instructions"></textarea>
+        </div>
         <br>
 
         <button type="submit">Create Recipe</button>
