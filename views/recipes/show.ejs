@@ -32,11 +32,11 @@
         <div class="instructions">
             <h3>Instructions: </h3>
             <% allinstructions.forEach((item)=>{ %>
-                <%= item %>
+                <li class="instructions-list"><%= item %></li>
                     <br>
                     <% }) %>
         </div>
-        <div class="comments">
+        <div class="comments-1">
 
             <form action="/recipes/<%= recipe._id %>/comments" method="post">
                 <textarea name="msg" rows="4" placeholder="comment"></textarea>
@@ -44,8 +44,9 @@
                 <button type="submit">Add comment</button>
             </form>
         </div>
+        <hr style="width: 80%;">
         <div class="comments">
-            <h3>Comments</h3>
+            <h2>Comments</h2>
             <% recipe.comments.forEach((comment)=> { %>
                 <div>
                     <p>
@@ -56,6 +57,7 @@
                 </div>
                 <% })%>
         </div>
+
         <div class="with-delete">
             <% if (recipe.owner._id.equals(user._id)) { %>
 

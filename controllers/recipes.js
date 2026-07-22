@@ -1,6 +1,7 @@
 const Recipe = require("../models/recipe.js");
 
 const showNewForm = (req, res) => {
+  
   res.render("recipes/new.ejs");
 };
 
