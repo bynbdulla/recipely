@@ -1,0 +1,21 @@
+.response{
+    margin-bottom: 5px;
+}
+.container-1{
+    display: flex;
+    border: none;
+    gap: 80px;
+}
+button{
+    justify-content: center;
+    background-color:rgb(69, 35, 69);
+    color: aliceblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 3px;
+    width: 25dvh;
+    margin-left: 2rem;
+    margin-top: 1.5rem;
+    font-size: medium;
+        align-self: center;
+
+}
