@@ -25,6 +25,7 @@ const index = async (req, res) => {
 };
 
 const show = async (req, res) => {
+  console.log(req.session.user)
   const recipe = await Recipe.findById(req.params.recipeId)
     .populate("owner")
     .populate("comments.ownerId");
