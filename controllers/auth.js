@@ -41,7 +41,7 @@ const signIn = async (req, res) => {
     })
 
     if (!userInDatabase) {
-        return res.send('User does not exist.')
+        return res.send('User does not exist. Please Sign-up')
     }
 
     const validPassword = bcrypt.compareSync(req.body.password, userInDatabase.password)
