@@ -71,14 +71,7 @@ app.delete("/recipes/:recipeId",isSignedIn, recipeCtrl.deleteRecipe);
 app.post("/recipes/:id/comments", commentCtrl.create);
 
 // Dashboard route
-app.get("/dashboard",isSignedIn, async (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/auth/sign-in");
-  }
-  res.render("dashboard.ejs", {
-    user: req.session.user,
-  });
-});
+app.get("/dashboard",isSignedIn, recipeCtrl.showMyRecipes);
 
 app.get("/*splat", (req, res) => {
   res.render("error.ejs", {
