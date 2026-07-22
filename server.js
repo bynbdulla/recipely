@@ -10,6 +10,9 @@ const morgan = require("morgan");
 const session = require("express-session");
 const { MongoStore } = require("connect-mongo");
 
+const isSignedIn = require("./middleware/is-signed-in");
+const passUserToView = require("./middleware/pass-user-to-view");
+
 const authCtrl = require("./controllers/auth");
 const recipeCtrl = require("./controllers/recipes");
 const commentCtrl = require("./controllers/comments");
@@ -40,6 +43,8 @@ app.use(
     }),
   }),
 );
+app.use(passUserToView);
+
 
 app.get("/", (req, res) => {
   res.render("home.ejs", {
@@ -54,19 +59,19 @@ app.post("/auth/sign-in", authCtrl.signIn);
 app.delete("/auth/sign-out", authCtrl.signOut);
 
 // Recipe Routes
-app.get("/recipes/new", recipeCtrl.showNewForm);
-app.post("/recipes", recipeCtrl.create);
+app.get("/recipes/new", isSignedIn, recipeCtrl.showNewForm);
+app.post("/recipes", isSignedIn, recipeCtrl.create);
 app.get("/recipes", recipeCtrl.index);
 app.get("/recipes/:recipeId", recipeCtrl.show);
 app.get("/recipes/:recipeId/edit", recipeCtrl.edit);
-app.put("/recipes/:recipeId", recipeCtrl.update);
-app.delete("/recipes/:recipeId", recipeCtrl.deleteRecipe);
+app.put("/recipes/:recipeId",isSignedIn, recipeCtrl.update);
+app.delete("/recipes/:recipeId",isSignedIn, recipeCtrl.deleteRecipe);
 
 //comment routes
 app.post("/recipes/:id/comments", commentCtrl.create);
 
 // Dashboard route
-app.get("/dashboard", async (req, res) => {
+app.get("/dashboard",isSignedIn, async (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/sign-in");
   }
