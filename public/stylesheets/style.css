@@ -75,7 +75,9 @@ button {
 .recipe-top {
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .container {
@@ -83,7 +85,7 @@ button {
   border: 2px solid rgb(3, 3, 39);
   padding: 20px;
   margin-top: 5rem;
-  max-width: 100dvh;
+  width: 100dvh;
 }
 
 .sign-out {
@@ -126,6 +128,7 @@ a {
 }
 .comments {
   justify-content: center;
+  align-items: center;
   text-align: left;
   margin-left: 3rem;
   margin-bottom: 2rem;
@@ -142,3 +145,9 @@ a {
 .website-name{
   color: purple;
 }
+
+img{
+    padding-right: 30px;
+}
+
+

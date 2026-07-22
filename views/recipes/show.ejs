@@ -2,11 +2,14 @@
 
     <div class="container">
         <div class="with-delete">
-            <a href="/recipes/<%= recipe._id %>/edit" class="delete">
-                <div><img src="/images/compose.png" width="30px"></div>
-            </a>
+            <% if (recipe.owner._id.equals(user._id)) { %>
+
+                <a href="/recipes/<%= recipe._id %>/edit" class="delete">
+                    <div><img src="/images/compose.png" width="30px"></div>
+                </a>
+                <%}%>
         </div>
-        
+
         <h1>
             <%= recipe.recipeName %>
         </h1>
@@ -37,6 +40,7 @@
 
             <form action="/recipes/<%= recipe._id %>/comments" method="post">
                 <textarea name="msg" rows="4" placeholder="comment"></textarea>
+                <br>
                 <button type="submit">Add comment</button>
             </form>
         </div>
@@ -53,9 +57,12 @@
                 <% })%>
         </div>
         <div class="with-delete">
-            <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
-                <button type="submit" class="delete"><img src="/images/delete.png" width="30px"></button>
-            </form>
+            <% if (recipe.owner._id.equals(user._id)) { %>
+
+                <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="delete"><img src="/images/delete.png" width="30px"></button>
+                </form>
+            <% } %>
         </div>
     </div>
 
