@@ -190,9 +190,14 @@ button {
   margin-bottom: 15px;
 }
 .comments-1 {
+  margin-top: 30px;
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
 }
 
 .comments-1 form {
@@ -224,6 +229,10 @@ button {
 }
 .comments {
   margin-bottom: 30px;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin-left: 3rem;
 }
 
 .comments h2 {
@@ -290,20 +299,7 @@ a {
   color: var(--color-wild-thyme);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.comments {
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  margin-left: 3rem;
-  margin-bottom: 2rem;
-}
-.comments-1 {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 2rem;
-  display: flex;
-}
+
 
 .comments-1 button {
   margin-top: 7px;
@@ -350,8 +346,6 @@ img {
   margin-left: 0px;
 }
 
-.comments-1 {
-  margin-top: 30px;
-}
+
 
 
